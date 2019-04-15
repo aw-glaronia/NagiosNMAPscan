@@ -10,6 +10,7 @@
 
 use strict;
 use Getopt::Long;
+# Needed for resolving Hostnames
 use Socket;
 
 
@@ -40,7 +41,7 @@ MAIN:
 	GetOptions
 	(
 		"ip=s"    	=> \$scan_address,
-		"fqdn=s" => \$scan_hostname,
+		"fqdn=s"	=> \$scan_hostname,
 		"nmap=s"  	=> \$nmap_path,
 		"ports=s" 	=> \$allowed_ports,
 		"cust_args=s" 	=> \$cust_args,
@@ -50,10 +51,10 @@ MAIN:
 	# Show usage info.	
 	if($help) { showHelp(); exit(OK); }
 	
-	# Resolve Hostname if supplied and store it to $scan_address
+	# Resolve Hostname, if supplied, and store it to $scan_address
 	if ($scan_hostname)
 	{
-$scan_address = inet_ntoa(inet_aton($scan_hostname));
+		$scan_address = inet_ntoa(inet_aton($scan_hostname));
 	}
 
 	# Parse command line arguments.
