@@ -1,6 +1,8 @@
 # NagiosNMAPscan
 Automate and analyze NMAP-Scans by Nagios. Fork of original perl-script by Serg Belokamen and Zhivko Todorov (Released under GPL Licence)
 
+It's recommended to use the additional NMAP-Argument "--open" to prevent NMAP Printing some filtered ports.
+
 USAGE EXAMPLES:
 
 Alowed ports are NULL:
