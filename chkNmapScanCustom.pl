@@ -109,10 +109,10 @@ MAIN:
 	{
 		# Print Nagios OK message
 		print "OK, ";
-		print "IP: ".$scan_address."; ";
-		print "Scanned: ".$allowed_ports."; ";
+		print "IP: ".$scan_address." / ";
+		print "Scanned: ".$allowed_ports." / ";
 		print "Allowed: ".$allowed_ports;
-		print "|open=".$scan_address.;
+		print "|open=".$scan_address." allowed=".$allowed_ports." deviation=none";
 
 		# Return OK to Nagios parser
 		exit(OK);
@@ -145,11 +145,11 @@ MAIN:
 	if(scalar @opened > 0) { $t_exit = CRITICAL; $t_output = "CRITICAL, "; }
 
 	print $t_output.
-			"IP: ".$scan_address."; ".
-			"Result: ".join(",", @opened, @closed, )."; ".
-			"Scanned: ".join(",", @total)."; ".
+			"IP: ".$scan_address." / ".
+			"Result: ".join(",", @opened, @closed, )." / ".
+			"Scanned: ".join(",", @total)." / ".
 			"Allowed: ".$allowed_ports;
-			"|open=".join(",", @total).;
+			"|open=".join(",", @total)." allowed=".$allowed_ports." deviation=".join(",", @opened, @closed, ).;
 
 	exit($t_exit);
 
