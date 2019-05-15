@@ -149,7 +149,7 @@ MAIN:
 			"Result: ".join(",", @opened, @closed, )." / ".
 			"Scanned: ".join(",", @total)." / ".
 			"Allowed: ".$allowed_ports;
-			"|open=".join(",", @total)." allowed=".$allowed_ports." deviation=".join(",", @opened, @closed, ).;
+			"|open=".join(",", @total)." allowed=".$allowed_ports." deviation=".join(",", @opened, @closed, );
 
 	exit($t_exit);
 
