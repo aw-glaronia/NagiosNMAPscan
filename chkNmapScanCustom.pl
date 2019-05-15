@@ -2,9 +2,9 @@
 ####
 #	Author:		Serg Belokamen <serg@fuzzyit.com>
 #	Author:		Zhivko Todorov <ztodorov@neterra.net> - add feature to pass custom arguments to nmap
-#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches.
+#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches. Added perf-data output.
 #	Date:		10-Apr-2019
-#	Version:	0.0.5
+#	Version:	0.0.6
 #	License:	GPL
 ####
 
@@ -112,6 +112,7 @@ MAIN:
 		print "IP: ".$scan_address."; ";
 		print "Scanned: ".$allowed_ports."; ";
 		print "Allowed: ".$allowed_ports;
+		print "|open=".$scan_address.;
 
 		# Return OK to Nagios parser
 		exit(OK);
@@ -148,6 +149,7 @@ MAIN:
 			"Result: ".join(",", @opened, @closed, )."; ".
 			"Scanned: ".join(",", @total)."; ".
 			"Allowed: ".$allowed_ports;
+			"|open=".join(",", @total).;
 
 	exit($t_exit);
 
