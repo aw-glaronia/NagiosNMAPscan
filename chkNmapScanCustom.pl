@@ -2,9 +2,9 @@
 ####
 #	Author:		Serg Belokamen <serg@fuzzyit.com>
 #	Author:		Zhivko Todorov <ztodorov@neterra.net> - add feature to pass custom arguments to nmap
-#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches.
+#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches. Added perf-data output.
 #	Date:		10-Apr-2019
-#	Version:	0.0.5
+#	Version:	0.0.6
 #	License:	GPL
 ####
 
@@ -109,9 +109,10 @@ MAIN:
 	{
 		# Print Nagios OK message
 		print "OK, ";
-		print "IP: ".$scan_address."; ";
-		print "Scanned: ".$allowed_ports."; ";
+		print "IP: ".$scan_address." / ";
+		print "Scanned: ".$allowed_ports." / ";
 		print "Allowed: ".$allowed_ports;
+		print "|open=".$allowed_ports." allowed=".$allowed_ports." deviation=none";
 
 		# Return OK to Nagios parser
 		exit(OK);
@@ -144,10 +145,11 @@ MAIN:
 	if(scalar @opened > 0) { $t_exit = CRITICAL; $t_output = "CRITICAL, "; }
 
 	print $t_output.
-			"IP: ".$scan_address."; ".
-			"Result: ".join(",", @opened, @closed, )."; ".
-			"Scanned: ".join(",", @total)."; ".
-			"Allowed: ".$allowed_ports;
+			"IP: ".$scan_address." / ".
+			"Result: ".join(",", @opened, @closed, )." / ".
+			"Scanned: ".join(",", @total)." / ".
+			"Allowed: ".$allowed_ports.
+			"|open=".join(",", @total)." allowed=".$allowed_ports." deviation=".join(",", @opened, @closed, );
 
 	exit($t_exit);
 
