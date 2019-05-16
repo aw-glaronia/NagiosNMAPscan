@@ -112,7 +112,6 @@ MAIN:
 		print "IP: ".$scan_address." / ";
 		print "Scanned: ".$allowed_ports." / ";
 		print "Allowed: ".$allowed_ports;
-		print "|open='".$allowed_ports."' allowed='".$allowed_ports."' deviation='none'";
 
 		# Return OK to Nagios parser
 		exit(OK);
@@ -148,8 +147,7 @@ MAIN:
 			"IP: ".$scan_address." / ".
 			"Result: ".join(",", @opened, @closed, )." / ".
 			"Scanned: ".join(",", @total)." / ".
-			"Allowed: ".$allowed_ports.
-			"|open='".join(",", @total)."' allowed='".$allowed_ports."' deviation=".join(",", @opened, @closed, )."'";
+			"Allowed: ".$allowed_ports.;
 
 	exit($t_exit);
 
