@@ -147,7 +147,7 @@ MAIN:
 			"IP: ".$scan_address." / ".
 			"Result: ".join(",", @opened, @closed, )." / ".
 			"Scanned: ".join(",", @total)." / ".
-			"Allowed: ".$allowed_ports.;
+			"Allowed: ".$allowed_ports.
 
 	exit($t_exit);
 
