@@ -2,9 +2,9 @@
 ####
 #	Author:		Serg Belokamen <serg@fuzzyit.com>
 #	Author:		Zhivko Todorov <ztodorov@neterra.net> - add feature to pass custom arguments to nmap
-#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches. Added perf-data output.
+#	Author:		Andreas Walker <a.walker@glaronia.ch> - add feature for resolving Hostnames (quick n'dirty). Removed some translation glitches.
 #	Date:		10-Apr-2019
-#	Version:	0.0.6
+#	Version:	0.0.5
 #	License:	GPL
 ####
 
